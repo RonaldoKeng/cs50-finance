@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Sell
+{% endblock %}
+
+{% block main %}
+    <form name="form" action="/sell" method="post">
+        <div class="form-group">
+            <select autofocus class="form-control" name="symbol" id="symbol">
+                <option value="default" selected disabled>Choose stock</option>
+                {% for stock in stocks %}
+                  {% if stock["SUM(shares)"] != 0 %}
+                    <option value="{{ stock['symbol'] }}">{{ stock["symbol"] }}</option>
+                  {% endif %}
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <input class="form-control" name="shares" id="shares" placeholder="Number of shares" type="number">
+        </div>
+        <button class="btn btn-primary" type="submit">Sell</button>
+    </form>
+
+    <script>
+        /* Client-side Form Validation */
+        document.querySelector('form').onsubmit = function() {
+
+            if (document.querySelector("#symbol").value == "default") {
+                alert("Select your stock to sell!")
+                return false;
+            }
+            else if (!document.querySelector("#shares").value) {
+                alert("Choose the number of shares to sell!")
+                return false;
+            }
+            else if (document.querySelector("#shares").value <= 0) {
+                alert("Number of shares to sell must be positive!")
+                return false;
+            }
+            return true;
+        };
+    </script>
+{% endblock %}

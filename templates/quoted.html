@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quote
+{% endblock %}
+
+{% block main %}
+    <p>
+        <h2>{{ quote["name"] }}</h2>
+        <h3>{{ quote["price"] }} USD</h3>
+    </p>
+{% endblock %}

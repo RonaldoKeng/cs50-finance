@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Portfolio
+{% endblock %}
+
+{% block main %}
+    <div>
+        <h2>Portfolio</h2>
+    </div>
+    <div>
+        <table class="table">
+          <thead>
+            <tr>
+              <br>
+              <th scope="col">Stock</th>
+              <th scope="col">Share(s)</th>
+              <th scope="col">Current Price</th>
+              <th scope="col">Share Value</th>
+            </tr>
+          </thead>
+          <tbody>
+              {% for stock in stocks %}
+                 {% if stock["SUM(shares)"] != 0 %}
+                    <tr>
+                        <td>{{ stock["name"] }}</td>
+                        <td>{{ stock["SUM(shares)"] }}</td>
+                        <td>{{ stock["price"] }}</td>
+                        <td>{{ stock["total_value"] }}</td>
+                    </tr>
+                 {% endif %}
+              {% endfor %}
+          </tbody>
+        </table>
+    </div>
+    <div>
+        <br><h5>Cash Balance</h5>
+        <h6>{{ "%.2f"|format(cash) }} USD</h6>
+    </div>
+    <div>
+        <br><h5>Total Value</h5>
+        <h6>{{ "%.2f"|format(portfolio_value) }} USD</h6>
+    </div>
+{% endblock %}
