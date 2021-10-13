@@ -1,4 +1,4 @@
-# C$50
+# C$50 Finance
 
 👋 Heyo! This is C$50's Finance project for HarvardX's CS50x course. It is a simulated stock trading platform that gives users $10,000 to invest. I'm pretty sure I invested mine all in Apple AAPL so that's interesting lol.
 
